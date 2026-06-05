@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>求人情報一覧 | エックスエージェント株式会社</title>
+  <meta name="description" content="エックスエージェントが紹介するスタートアップ・成長企業の求人情報一覧です。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0A1628;
+      --blue-dark: #0D2D6B;
+      --blue-mid: #1A56DB;
+      --blue-light: #3B82F6;
+      --cyan: #22D3EE;
+      --white: #FFFFFF;
+      --off-white: #F0F6FF;
+      --gray-light: #E2EAF4;
+      --gray-mid: #94A3B8;
+      --gray-dark: #475569;
+      --text: #0F172A;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Sans JP', sans-serif; font-weight: 300; color: var(--text); background: var(--off-white); }
+
+    /* HEADER */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px; height: 72px;
+      background: rgba(10,22,40,0.97); backdrop-filter: blur(8px);
+    }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-text {
+      font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600;
+      background: linear-gradient(135deg, var(--blue-light), var(--cyan));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      letter-spacing: 0.05em;
+    }
+    nav { display: flex; align-items: center; gap: 32px; }
+    nav a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+    nav a:hover { color: white; }
+    .nav-cta { background: linear-gradient(135deg, var(--blue-mid), var(--cyan)); color: white !important; padding: 10px 24px; }
+
+    /* PAGE HEADER */
+    .page-header {
+      background: var(--navy); padding: 140px 48px 80px;
+      position: relative; overflow: hidden;
+    }
+    .page-header::after {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(26,86,219,0.2) 0%, transparent 70%);
+    }
+    .page-header-inner { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; }
+    .page-label {
+      font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+      background: linear-gradient(90deg, var(--blue-light), var(--cyan));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 16px; display: flex; align-items: center; gap: 16px;
+    }
+    .page-label::before { content: ''; width: 30px; height: 1px; background: linear-gradient(90deg, var(--blue-light), var(--cyan)); flex-shrink: 0; }
+    .page-title { font-family: 'Cormorant Garamond', serif; font-size: 52px; font-weight: 400; color: white; margin-bottom: 16px; }
+    .page-desc { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 2; }
+
+    /* FILTERS */
+    .filters-wrap { background: white; border-bottom: 1px solid var(--gray-light); position: sticky; top: 72px; z-index: 50; }
+    .filters { max-width: 1200px; margin: 0 auto; padding: 0 48px; display: flex; gap: 8px; align-items: center; height: 56px; overflow-x: auto; }
+    .filter-btn {
+      padding: 6px 16px; font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+      border: 1px solid var(--gray-light); background: white; color: var(--gray-dark);
+      cursor: pointer; white-space: nowrap; transition: all 0.2s; font-family: 'Noto Sans JP', sans-serif;
+    }
+    .filter-btn.active, .filter-btn:hover { background: var(--navy); color: white; border-color: var(--navy); }
+
+    /* JOB LIST */
+    .jobs-wrap { max-width: 1200px; margin: 0 auto; padding: 56px 48px; }
+    .jobs-count { font-size: 12px; color: var(--gray-mid); margin-bottom: 32px; letter-spacing: 0.05em; }
+    .jobs-grid { display: flex; flex-direction: column; gap: 2px; background: var(--gray-light); }
+
+    .job-card {
+      background: white; padding: 32px 40px;
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 24px; align-items: center;
+      text-decoration: none; color: inherit;
+      transition: all 0.2s; position: relative; overflow: hidden;
+    }
+    .job-card::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+      background: linear-gradient(180deg, var(--blue-mid), var(--cyan));
+      transform: scaleY(0); transform-origin: top; transition: transform 0.3s;
+    }
+    .job-card:hover::before { transform: scaleY(1); }
+    .job-card:hover { background: var(--off-white); }
+
+    .job-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+    .job-tag {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 3px 10px; background: rgba(26,86,219,0.07); color: var(--blue-mid);
+    }
+    .job-tag.type { background: rgba(34,211,238,0.08); color: #0891B2; }
+
+    .job-company { font-size: 12px; color: var(--gray-mid); margin-bottom: 8px; letter-spacing: 0.05em; }
+    .job-title { font-size: 18px; font-weight: 500; color: var(--navy); margin-bottom: 12px; line-height: 1.4; }
+    .job-meta { display: flex; gap: 20px; flex-wrap: wrap; }
+    .job-meta-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--gray-dark); }
+    .job-meta-item svg { opacity: 0.6; flex-shrink: 0; }
+
+    .job-arrow {
+      width: 40px; height: 40px; border: 1px solid var(--gray-light);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gray-mid); flex-shrink: 0; transition: all 0.2s;
+    }
+    .job-card:hover .job-arrow { background: var(--navy); border-color: var(--navy); color: white; }
+
+    /* EMPTY STATE */
+    .empty { text-align: center; padding: 80px 0; color: var(--gray-mid); font-size: 14px; }
+
+    /* FOOTER */
+    footer { background: var(--navy); padding: 48px; margin-top: 80px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .footer-copy { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .footer-back { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 12px; letter-spacing: 0.08em; transition: color 0.2s; }
+    .footer-back:hover { color: white; }
+
+    @media (max-width: 768px) {
+      header { padding: 0 24px; }
+      nav { display: none; }
+      .page-header { padding: 120px 24px 60px; }
+      .page-title { font-size: 36px; }
+      .filters { padding: 0 24px; }
+      .jobs-wrap { padding: 40px 24px; }
+      .job-card { padding: 24px; grid-template-columns: 1fr; }
+      .job-arrow { display: none; }
+      footer { padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="../index.html" class="logo">
+    <span class="logo-text">X-AGENT</span>
+  </a>
+  <nav>
+    <a href="../index.html#services">サービス</a>
+    <a href="../index.html#partners">パートナー</a>
+    <a href="../index.html#about">会社概要</a>
+    <a href="../index.html#contact" class="nav-cta">お問い合わせ</a>
+  </nav>
+</header>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="page-label">Job Offers</div>
+    <h1 class="page-title">求人情報一覧</h1>
+    <p class="page-desc">スタートアップ・成長企業への転職をお考えの方へ。<br>厳選した求人情報をご紹介します。</p>
+  </div>
+</div>
+
+<div class="filters-wrap">
+  <div class="filters">
+    <button class="filter-btn active" onclick="filterJobs('all', this)">すべて</button>
+    <button class="filter-btn" onclick="filterJobs('経営企画', this)">経営企画・財務</button>
+    <button class="filter-btn" onclick="filterJobs('営業', this)">営業・マーケティング</button>
+    <button class="filter-btn" onclick="filterJobs('事業開発', this)">事業開発</button>
+    <button class="filter-btn" onclick="filterJobs('エンジニア', this)">エンジニア</button>
+    <button class="filter-btn" onclick="filterJobs('VC', this)">VC・投資</button>
+    <button class="filter-btn" onclick="filterJobs('CXO', this)">CXO・幹部</button>
+  </div>
+</div>
+
+<div class="jobs-wrap">
+  <div class="jobs-count" id="jobs-count"></div>
+  <div class="jobs-grid" id="jobs-grid">
+    <!-- 求人カードはJSで動的生成 -->
+  </div>
+  <div class="empty" id="empty-state" style="display:none;">現在該当する求人がありません。</div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <a href="../index.html" class="footer-back">← トップページへ戻る</a>
+    <div class="footer-copy">© X-Agent, Inc. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+// =============================================
+// 求人データ（新しい求人を追加するときはここに追記）
+// =============================================
+const JOBS = [
+  {
+    id: "incubate-fund-venture-capitalist",
+    company: "インキュベイトファンド株式会社",
+    title: "ベンチャーキャピタリスト（アソシエイト）",
+    type: "契約社員",
+    location: "東京都",
+    category: "VC",
+    tags: ["VC", "投資"],
+    new: true
+  },
+  // ここに求人を追加していく
+  // {
+  //   id: "example-company-coo",
+  //   salary: "800万〜1,200万円",  // 不明な場合は "応相談"
+  //   company: "株式会社〇〇",
+  //   title: "COO候補",
+  //   type: "正社員",
+  //   location: "東京都",
+  //   category: "CXO",
+  //   tags: ["CXO", "スタートアップ"],
+  //   new: false
+  // },
+];
+
+// =============================================
+// 描画ロジック（変更不要）
+// =============================================
+function renderJobs(jobs) {
+  const grid = document.getElementById('jobs-grid');
+  const count = document.getElementById('jobs-count');
+  const empty = document.getElementById('empty-state');
+
+  if (jobs.length === 0) {
+    grid.innerHTML = '';
+    empty.style.display = 'block';
+    count.textContent = '';
+    return;
+  }
+
+  empty.style.display = 'none';
+  count.textContent = `${jobs.length} 件の求人`;
+  grid.innerHTML = jobs.map(job => `
+    <a href="${job.id}.html" class="job-card" data-category="${job.category}">
+      <div>
+        <div class="job-tags">
+          ${job.new ? '<span class="job-tag">NEW</span>' : ''}
+          ${job.tags.map(t => `<span class="job-tag type">${t}</span>`).join('')}
+        </div>
+        <div class="job-company">${job.company}</div>
+        <div class="job-title">${job.title}</div>
+        <div class="job-meta">
+          <div class="job-meta-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+            ${job.type}
+          </div>
+          <div class="job-meta-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            ${job.location}
+          </div>
+        </div>
+      </div>
+      <div class="job-arrow">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+    </a>
+  `).join('');
+}
+
+function filterJobs(category, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const filtered = category === 'all' ? JOBS : JOBS.filter(j => j.category === category || j.tags.includes(category));
+  renderJobs(filtered);
+}
+
+// 初期表示
+renderJobs(JOBS);
+</script>
+</body>
+</html>
