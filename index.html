@@ -519,19 +519,19 @@ document.addEventListener('DOMContentLoaded',function(){
 
   // グラフアニメーション
   function animateCard(card){
+    if(card.classList.contains('visible')) return;
     card.classList.add('visible');
-    // 棒グラフ
     card.querySelectorAll('.bar-fill').forEach(function(el){
       var w = el.getAttribute('data-w');
-      if(w){ setTimeout(function(){ el.style.width = w; }, 100); }
+      if(w){ setTimeout(function(){ el.style.width = w; }, 150); }
     });
-    // 円グラフ
     card.querySelectorAll('.donut-arc').forEach(function(el){
       var d = el.getAttribute('data-dash');
-      if(d){ setTimeout(function(){ el.setAttribute('stroke-dasharray', d); }, 100); }
+      if(d){ setTimeout(function(){ el.setAttribute('stroke-dasharray', d); }, 150); }
     });
   }
 
+  // スクロール位置に関係なく発火するよう rootMargin を調整
   var observer = new IntersectionObserver(function(entries){
     entries.forEach(function(entry){
       if(entry.isIntersecting){
@@ -539,11 +539,21 @@ document.addEventListener('DOMContentLoaded',function(){
         observer.unobserve(entry.target);
       }
     });
-  },{threshold:0.15});
+  },{threshold:0, rootMargin:'0px 0px -50px 0px'});
 
   document.querySelectorAll('.stat-card').forEach(function(card){
     observer.observe(card);
   });
+
+  // ページロード時点で既に見えているカードも即アニメーション
+  setTimeout(function(){
+    document.querySelectorAll('.stat-card').forEach(function(card){
+      var rect = card.getBoundingClientRect();
+      if(rect.top < window.innerHeight){
+        animateCard(card);
+      }
+    });
+  }, 300);
 });
 </script>
 </body>
