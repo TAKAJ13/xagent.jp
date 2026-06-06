@@ -9,8 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
-body{font-family:'Noto Sans JP',sans-serif;font-weight:300;color:#0F172A;background:#F0F6FF;overflow-x:hidden;word-break:keep-all;overflow-wrap:break-word;}
+body{font-family:'Noto Sans JP',sans-serif;font-weight:300;color:#0F172A;background:#F0F6FF;overflow-x:hidden;word-break:keep-all;}
 a{text-decoration:none;color:inherit;}
 :root{--navy:#0A1628;--blue:#1A56DB;--cyan:#22D3EE;--off:#F0F6FF;--gl:#E2EAF4;--gm:#94A3B8;--gd:#475569;}
 header{position:fixed;top:0;left:0;right:0;z-index:999;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:rgba(10,22,40,0.97);}
@@ -24,21 +23,26 @@ header{position:fixed;top:0;left:0;right:0;z-index:999;height:60px;display:flex;
 .page-label::before,.page-label::after{content:'';width:28px;height:1px;background:linear-gradient(90deg,#3B82F6,#22D3EE);flex-shrink:0;}
 .page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,6vw,48px);font-weight:400;color:#fff;margin-bottom:8px;}
 .page-desc{font-size:14px;color:rgba(255,255,255,0.55);}
-.content{max-width:1100px;margin:0 auto;padding:40px 20px 80px;}
-.jobs-count{font-size:13px;color:var(--gd);margin-bottom:24px;}
+.content{max-width:1100px;margin:0 auto;padding:32px 20px 80px;}
+.filter-wrap{background:#fff;padding:20px;margin-bottom:24px;}
+.filter-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;align-items:center;}
+.filter-row:last-child{margin-bottom:0;}
+.filter-label{font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--gm);width:60px;flex-shrink:0;}
+.filter-btn{font-size:11px;padding:4px 12px;border:1px solid var(--gl);background:#fff;color:var(--gd);cursor:pointer;transition:all 0.15s;}
+.filter-btn:hover,.filter-btn.on{background:var(--blue);border-color:var(--blue);color:#fff;}
+.jobs-count{font-size:13px;color:var(--gd);margin-bottom:16px;}
 .jobs-grid{display:flex;flex-direction:column;gap:2px;}
-.job-card{background:#fff;padding:24px;display:flex;flex-direction:column;gap:12px;border-left:3px solid transparent;transition:border-color 0.2s,box-shadow 0.2s;cursor:pointer;}
-.job-card:hover{border-left-color:var(--blue);box-shadow:2px 0 12px rgba(26,86,219,0.08);}
-.job-card-top{display:flex;flex-direction:column;gap:4px;}
-.job-category{font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);background:rgba(26,86,219,0.07);padding:2px 8px;display:inline-block;width:fit-content;}
-.job-title{font-size:17px;font-weight:500;color:var(--navy);line-height:1.4;}
-.job-company{font-size:13px;color:var(--gd);}
-.job-meta{display:flex;flex-wrap:wrap;gap:10px;}
-.job-meta-item{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--gd);}
+.job-card{background:#fff;padding:20px 24px;display:flex;flex-direction:column;gap:10px;border-left:3px solid transparent;transition:border-color 0.2s;cursor:pointer;}
+.job-card:hover{border-left-color:var(--blue);}
+.job-card.hidden{display:none;}
+.job-cat{font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);background:rgba(26,86,219,0.07);padding:2px 8px;display:inline-block;width:fit-content;}
+.job-title{font-size:16px;font-weight:500;color:var(--navy);line-height:1.4;}
+.job-co{font-size:13px;color:var(--gd);}
+.job-meta{display:flex;flex-wrap:wrap;gap:12px;}
+.job-mi{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--gd);}
 .job-tags{display:flex;flex-wrap:wrap;gap:6px;}
 .job-tag{font-size:10px;color:var(--gm);border:1px solid var(--gl);padding:2px 8px;}
-.job-arrow{font-size:12px;color:var(--blue);margin-top:4px;}
-.back-link{display:inline-flex;align-items:center;gap:6px;color:var(--gm);font-size:12px;margin-bottom:28px;transition:color 0.2s;}
+.back-link{display:inline-flex;align-items:center;gap:6px;color:var(--gm);font-size:12px;margin-bottom:20px;transition:color 0.2s;}
 .back-link:hover{color:var(--blue);}
 footer{background:var(--navy);padding:32px 20px;text-align:center;}
 .ft-logo{display:flex;align-items:center;gap:8px;justify-content:center;margin-bottom:16px;}
@@ -48,11 +52,10 @@ footer{background:var(--navy);padding:32px 20px;text-align:center;}
   header{height:72px;padding:0 48px;}
   .logo img{height:34px;}
   .page-header{padding:110px 48px 56px;}
-  .content{padding:48px 48px 80px;}
+  .content{padding:40px 48px 80px;}
   .job-card{flex-direction:row;align-items:center;gap:24px;}
-  .job-card-top{flex:1;}
-  .job-meta{flex-shrink:0;flex-direction:column;gap:6px;align-items:flex-end;}
-  .job-arrow{align-self:center;flex-shrink:0;}
+  .job-card>div:first-child{flex:1;}
+  .job-meta{flex-shrink:0;flex-direction:column;gap:4px;align-items:flex-end;min-width:200px;}
 }
 </style>
 </head>
@@ -75,8 +78,21 @@ footer{background:var(--navy);padding:32px 20px;text-align:center;}
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15 18 9 12 15 6"/></svg>
     トップページに戻る
   </a>
-  <div class="jobs-count" id="jobs-count"></div>
-  <div class="jobs-grid" id="jobs-grid"></div>
+
+  <div class="filter-wrap">
+    <div class="filter-row">
+      <span class="filter-label">職種</span>
+      <button class="filter-btn on" data-type="cat" data-val="all">すべて</button>
+      <button class="filter-btn" data-type="cat" data-val="CFO候補">CFO候補</button><button class="filter-btn" data-type="cat" data-val="PMI">PMI</button><button class="filter-btn" data-type="cat" data-val="エンジニア">エンジニア</button><button class="filter-btn" data-type="cat" data-val="カスタマーサクセス">カスタマーサクセス</button><button class="filter-btn" data-type="cat" data-val="事業企画">事業企画</button><button class="filter-btn" data-type="cat" data-val="事業責任者">事業責任者</button><button class="filter-btn" data-type="cat" data-val="営業">営業</button><button class="filter-btn" data-type="cat" data-val="経営企画">経営企画</button><button class="filter-btn" data-type="cat" data-val="経理・財務">経理・財務</button>
+    </div>
+    <div class="filter-row">
+      <span class="filter-label">タグ</span>
+      <button class="filter-btn" data-type="tag" data-val="0→1">0→1</button><button class="filter-btn" data-type="tag" data-val="AI">AI</button><button class="filter-btn" data-type="tag" data-val="CEO直下">CEO直下</button><button class="filter-btn" data-type="tag" data-val="CFO候補">CFO候補</button><button class="filter-btn" data-type="tag" data-val="CS">CS</button><button class="filter-btn" data-type="tag" data-val="DX">DX</button><button class="filter-btn" data-type="tag" data-val="EdTech">EdTech</button><button class="filter-btn" data-type="tag" data-val="IPO">IPO</button><button class="filter-btn" data-type="tag" data-val="IPO準備">IPO準備</button><button class="filter-btn" data-type="tag" data-val="LLM">LLM</button><button class="filter-btn" data-type="tag" data-val="M&A">M&A</button><button class="filter-btn" data-type="tag" data-val="PMI">PMI</button><button class="filter-btn" data-type="tag" data-val="SaaS">SaaS</button><button class="filter-btn" data-type="tag" data-val="VPoB">VPoB</button><button class="filter-btn" data-type="tag" data-val="エンジニア">エンジニア</button><button class="filter-btn" data-type="tag" data-val="エンタープライズ">エンタープライズ</button><button class="filter-btn" data-type="tag" data-val="コンサル">コンサル</button><button class="filter-btn" data-type="tag" data-val="コンサルタント">コンサルタント</button><button class="filter-btn" data-type="tag" data-val="スタートアップ">スタートアップ</button><button class="filter-btn" data-type="tag" data-val="タレントマネジメント">タレントマネジメント</button><button class="filter-btn" data-type="tag" data-val="ファイナンス">ファイナンス</button><button class="filter-btn" data-type="tag" data-val="ヘルスケア">ヘルスケア</button><button class="filter-btn" data-type="tag" data-val="マネージャー">マネージャー</button><button class="filter-btn" data-type="tag" data-val="事業企画">事業企画</button><button class="filter-btn" data-type="tag" data-val="事業責任者">事業責任者</button><button class="filter-btn" data-type="tag" data-val="医療">医療</button><button class="filter-btn" data-type="tag" data-val="社会課題">社会課題</button><button class="filter-btn" data-type="tag" data-val="管理部門">管理部門</button><button class="filter-btn" data-type="tag" data-val="経営企画">経営企画</button><button class="filter-btn" data-type="tag" data-val="経理">経理</button><button class="filter-btn" data-type="tag" data-val="農業">農業</button>
+    </div>
+  </div>
+
+  <div class="jobs-count" id="jcount"></div>
+  <div class="jobs-grid" id="jgrid"></div>
 </div>
 <footer>
   <div class="ft-logo">
@@ -86,37 +102,65 @@ footer{background:var(--navy);padding:32px 20px;text-align:center;}
   <div class="ft-copy">© X-Agent, Inc. All rights reserved.</div>
 </footer>
 <script>
-const JOBS = [{'id': 'icare-sales-director', 'title': 'セールス部長', 'company': '株式会社iCARE', 'category': '営業', 'salary': '900万円〜1,300万円', 'location': '東京都品川区（五反田）', 'tags': ['SaaS', 'エンタープライズ', 'マネージャー', 'ヘルスケア']}, {'id': 'kaonavi-biz-strategy', 'title': '事業戦略企画・推進担当', 'company': '株式会社カオナビ', 'category': '事業企画', 'salary': '900万円〜1,500万円', 'location': '東京都渋谷区（渋谷）', 'tags': ['SaaS', '事業企画', 'タレントマネジメント', 'IPO']}, {'id': 'tacoms-cfo', 'title': 'VP of Corporate（CFO候補）', 'company': '株式会社tacoms', 'category': 'CFO候補', 'salary': '1,000万円〜2,000万円以上', 'location': '東京都目黒区（代官山）', 'tags': ['CFO候補', 'IPO', 'ファイナンス', 'SaaS']}, {'id': 'mntsq-biz-planning', 'title': '経営企画（部長候補）', 'company': 'MNTSQ株式会社', 'category': '経営企画', 'salary': '1,000万円〜1,500万円', 'location': '東京都中央区晴海', 'tags': ['経営企画', 'CEO直下', 'AI', 'IPO']}, {'id': 'mntsq-cs-consultant', 'title': 'シニアカスタマーサクセス・コンサルタント', 'company': 'MNTSQ株式会社', 'category': 'カスタマーサクセス', 'salary': '1,000万円〜1,500万円', 'location': '東京都中央区晴海', 'tags': ['CS', 'エンタープライズ', 'AI', 'コンサルタント']}, {'id': 'nihon-agri-biz-planning', 'title': '事業企画（農業開発事業本部）', 'company': '株式会社日本農業', 'category': '事業企画', 'salary': '800万円〜1,200万円', 'location': '東京都（水戸・青森出張あり）', 'tags': ['事業企画', '農業', 'DX', '社会課題']}, {'id': 'fastdoctor-pmi', 'title': 'PMI総責任者（PMI部長候補）', 'company': 'ファストドクター株式会社', 'category': 'PMI', 'salary': '1,000万円〜1,400万円', 'location': '東京都渋谷区（恵比寿）', 'tags': ['PMI', 'M&A', '医療', 'コンサル']}, {'id': 'monoxer-vpob', 'title': 'for Business事業責任者（VPoB候補）', 'company': 'モノグサ株式会社', 'category': '事業責任者', 'salary': '1,000万円〜1,500万円', 'location': '東京都（飯田橋）', 'tags': ['VPoB', 'SaaS', '事業責任者', 'EdTech']}, {'id': 'vixion-accounting-mgr', 'title': '経理マネジャー（IPO準備）', 'company': 'ViXion株式会社', 'category': '経理・財務', 'salary': '750万円〜1,050万円', 'location': '東京都中央区日本橋', 'tags': ['経理', 'IPO準備', 'スタートアップ', '管理部門']}, {'id': 'techtouch-founding-engineer', 'title': 'ファウンディングエンジニア（AI Agent新規事業）', 'company': 'テックタッチ株式会社', 'category': 'エンジニア', 'salary': '700万円〜1,200万円', 'location': '東京都中央区銀座（リモート可）', 'tags': ['AI', 'LLM', '0→1', 'エンジニア']}];
+const JOBS = [{"id": "icare-sales-director", "title": "セールス部長", "company": "株式会社iCARE", "category": "営業", "salary": "900万円〜1,300万円", "location": "東京都品川区（五反田）", "tags": ["SaaS", "エンタープライズ", "マネージャー", "ヘルスケア"]}, {"id": "kaonavi-biz-strategy", "title": "事業戦略企画・推進担当", "company": "株式会社カオナビ", "category": "事業企画", "salary": "900万円〜1,500万円", "location": "東京都渋谷区（渋谷）", "tags": ["SaaS", "事業企画", "タレントマネジメント", "IPO"]}, {"id": "tacoms-cfo", "title": "VP of Corporate（CFO候補）", "company": "株式会社tacoms", "category": "CFO候補", "salary": "1,000万円〜2,000万円以上", "location": "東京都目黒区（代官山）", "tags": ["CFO候補", "IPO", "ファイナンス", "SaaS"]}, {"id": "mntsq-biz-planning", "title": "経営企画（部長候補）", "company": "MNTSQ株式会社", "category": "経営企画", "salary": "1,000万円〜1,500万円", "location": "東京都中央区晴海", "tags": ["経営企画", "CEO直下", "AI", "IPO"]}, {"id": "mntsq-cs-consultant", "title": "シニアカスタマーサクセス・コンサルタント", "company": "MNTSQ株式会社", "category": "カスタマーサクセス", "salary": "1,000万円〜1,500万円", "location": "東京都中央区晴海", "tags": ["CS", "エンタープライズ", "AI", "コンサルタント"]}, {"id": "nihon-agri-biz-planning", "title": "事業企画（農業開発事業本部）", "company": "株式会社日本農業", "category": "事業企画", "salary": "800万円〜1,200万円", "location": "東京都（水戸・青森出張あり）", "tags": ["事業企画", "農業", "DX", "社会課題"]}, {"id": "fastdoctor-pmi", "title": "PMI総責任者（PMI部長候補）", "company": "ファストドクター株式会社", "category": "PMI", "salary": "1,000万円〜1,400万円", "location": "東京都渋谷区（恵比寿）", "tags": ["PMI", "M&A", "医療", "コンサル"]}, {"id": "monoxer-vpob", "title": "for Business事業責任者（VPoB候補）", "company": "モノグサ株式会社", "category": "事業責任者", "salary": "1,000万円〜1,500万円", "location": "東京都（飯田橋）", "tags": ["VPoB", "SaaS", "事業責任者", "EdTech"]}, {"id": "vixion-accounting-mgr", "title": "経理マネジャー（IPO準備）", "company": "ViXion株式会社", "category": "経理・財務", "salary": "750万円〜1,050万円", "location": "東京都中央区日本橋", "tags": ["経理", "IPO準備", "スタートアップ", "管理部門"]}, {"id": "techtouch-founding-engineer", "title": "ファウンディングエンジニア（AI Agent新規事業）", "company": "テックタッチ株式会社", "category": "エンジニア", "salary": "700万円〜1,200万円", "location": "東京都中央区銀座（リモート可）", "tags": ["AI", "LLM", "0→1", "エンジニア"]}];
 
-const grid = document.getElementById('jobs-grid');
-const count = document.getElementById('jobs-count');
-count.textContent = '全' + JOBS.length + '件';
+const ico = { sal:'<circle cx="12" cy="12" r="9"/><path d="M12 6v2m0 8v2M9.5 9.5a2.5 2.5 0 015 0c0 1.5-1 2-2.5 2.5S9.5 15 9.5 16.5a2.5 2.5 0 005 0"/>', loc:'<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>' };
 
-JOBS.forEach(function(job) {
-  const card = document.createElement('div');
-  card.className = 'job-card';
-  card.onclick = function() { window.location.href = job.id + '.html'; };
-  const tags = job.tags.map(t => '<span class="job-tag">' + t + '</span>').join('');
-  card.innerHTML = `
-    <div class="job-card-top">
-      <span class="job-category">${job.category}</span>
-      <div class="job-title">${job.title}</div>
-      <div class="job-company">${job.company}</div>
-      <div class="job-tags" style="margin-top:8px;">${tags}</div>
-    </div>
-    <div class="job-meta">
-      <div class="job-meta-item">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 6v2m0 8v2M9.5 9.5a2.5 2.5 0 015 0c0 1.5-1 2-2.5 2.5S9.5 15 9.5 16.5a2.5 2.5 0 005 0"/></svg>
-        ${job.salary}
-      </div>
-      <div class="job-meta-item">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        ${job.location}
-      </div>
-    </div>
-    <div class="job-arrow">詳細を見る →</div>
-  `;
-  grid.appendChild(card);
+function mkcard(j) {
+  const d = document.createElement('div');
+  d.className = 'job-card';
+  d.dataset.cat = j.category;
+  d.dataset.tags = j.tags.join(',');
+  d.onclick = ()=> window.location.href = j.id+'.html';
+  d.innerHTML = `<div>
+    <span class="job-cat">${j.category}</span>
+    <div class="job-title">${j.title}</div>
+    <div class="job-co">${j.company}</div>
+    <div class="job-tags" style="margin-top:8px;">${j.tags.map(t=>`<span class="job-tag">${t}</span>`).join('')}</div>
+  </div>
+  <div class="job-meta">
+    <div class="job-mi"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">${ico.sal}</svg>${j.salary}</div>
+    <div class="job-mi"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">${ico.loc}</svg>${j.location}</div>
+  </div>`;
+  return d;
+}
+
+const grid = document.getElementById('jgrid');
+const count = document.getElementById('jcount');
+JOBS.forEach(j => grid.appendChild(mkcard(j)));
+
+let selCat = 'all', selTag = null;
+
+function update() {
+  let n = 0;
+  grid.querySelectorAll('.job-card').forEach(c => {
+    const catOk = selCat === 'all' || c.dataset.cat === selCat;
+    const tagOk = !selTag || c.dataset.tags.split(',').includes(selTag);
+    const show = catOk && tagOk;
+    c.classList.toggle('hidden', !show);
+    if(show) n++;
+  });
+  count.textContent = '全'+n+'件';
+}
+update();
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const type = this.dataset.type, val = this.dataset.val;
+    if(type === 'cat') {
+      selCat = val;
+      document.querySelectorAll('[data-type="cat"]').forEach(b => b.classList.remove('on'));
+      this.classList.add('on');
+    } else {
+      if(selTag === val) { selTag = null; this.classList.remove('on'); }
+      else {
+        selTag = val;
+        document.querySelectorAll('[data-type="tag"]').forEach(b => b.classList.remove('on'));
+        this.classList.add('on');
+      }
+    }
+    update();
+  });
 });
 </script>
 </body>
