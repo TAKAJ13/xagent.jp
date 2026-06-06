@@ -83,6 +83,7 @@ footer{background:var(--navy);padding:32px 20px;text-align:center;}
     <div class="filter-row">
       <span class="filter-label">社名</span>
       <input id="search-company" type="text" placeholder="会社名で検索..." style="font-family:inherit;font-size:12px;padding:4px 12px;border:1px solid var(--gl);color:var(--gd);outline:none;width:200px;">
+      <button class="filter-btn" data-type="confidential" data-val="1">非公開求人</button>
     </div>
     <div class="filter-row">
       <span class="filter-label">年収</span>
@@ -143,7 +144,7 @@ const grid = document.getElementById('jgrid');
 const count = document.getElementById('jcount');
 JOBS.forEach(j => grid.appendChild(mkcard(j)));
 
-let selCat = 'all', selTag = null, selSalary = 0, searchText = '';
+let selCat = 'all', selTag = null, selSalary = 0, searchText = '', selConfidential = false;
 
 function getSalaryMax(salaryStr) {
   // 全ての数字を抽出して最大値を返す
@@ -159,7 +160,8 @@ function update() {
     const tagOk = !selTag || c.dataset.tags.split(',').includes(selTag);
     const salOk = selSalary === 0 || getSalaryMax(c.dataset.salary) >= selSalary;
     const txtOk = !searchText || c.dataset.company.includes(searchText);
-    const show = catOk && tagOk && salOk && txtOk;
+    const confOk = !selConfidential || c.dataset.company === '【非公開求人】';
+    const show = catOk && tagOk && salOk && txtOk && confOk;
     c.classList.toggle('hidden', !show);
     if(show) n++;
   });
@@ -178,6 +180,9 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
       selSalary = parseInt(val);
       document.querySelectorAll('[data-type="salary"]').forEach(b => b.classList.remove('on'));
       this.classList.add('on');
+    } else if(type === 'confidential') {
+      selConfidential = !selConfidential;
+      this.classList.toggle('on', selConfidential);
     } else {
       if(selTag === val) { selTag = null; this.classList.remove('on'); }
       else {
