@@ -81,6 +81,18 @@ footer{background:var(--navy);padding:32px 20px;text-align:center;}
 
   <div class="filter-wrap">
     <div class="filter-row">
+      <span class="filter-label">社名</span>
+      <input id="search-company" type="text" placeholder="会社名で検索..." style="font-family:inherit;font-size:12px;padding:4px 12px;border:1px solid var(--gl);color:var(--gd);outline:none;width:200px;">
+    </div>
+    <div class="filter-row">
+      <span class="filter-label">年収</span>
+      <button class="filter-btn on" data-type="salary" data-val="0">すべて</button>
+      <button class="filter-btn" data-type="salary" data-val="800">800万円以上</button>
+      <button class="filter-btn" data-type="salary" data-val="1000">1,000万円以上</button>
+      <button class="filter-btn" data-type="salary" data-val="1200">1,200万円以上</button>
+      <button class="filter-btn" data-type="salary" data-val="1500">1,500万円以上</button>
+    </div>
+    <div class="filter-row">
       <span class="filter-label">職種</span>
       <button class="filter-btn on" data-type="cat" data-val="all">すべて</button>
       <button class="filter-btn" data-type="cat" data-val="CFO候補">CFO候補</button><button class="filter-btn" data-type="cat" data-val="PMI">PMI</button><button class="filter-btn" data-type="cat" data-val="エンジニア">エンジニア</button><button class="filter-btn" data-type="cat" data-val="カスタマーサクセス">カスタマーサクセス</button><button class="filter-btn" data-type="cat" data-val="事業企画">事業企画</button><button class="filter-btn" data-type="cat" data-val="事業責任者">事業責任者</button><button class="filter-btn" data-type="cat" data-val="営業">営業</button><button class="filter-btn" data-type="cat" data-val="経営企画">経営企画</button><button class="filter-btn" data-type="cat" data-val="経理・財務">経理・財務</button>
@@ -111,6 +123,8 @@ function mkcard(j) {
   d.className = 'job-card';
   d.dataset.cat = j.category;
   d.dataset.tags = j.tags.join(',');
+  d.dataset.company = j.company;
+  d.dataset.salary = j.salary;
   d.onclick = ()=> window.location.href = j.id+'.html';
   d.innerHTML = `<div>
     <span class="job-cat">${j.category}</span>
@@ -129,14 +143,23 @@ const grid = document.getElementById('jgrid');
 const count = document.getElementById('jcount');
 JOBS.forEach(j => grid.appendChild(mkcard(j)));
 
-let selCat = 'all', selTag = null;
+let selCat = 'all', selTag = null, selSalary = 0, searchText = '';
+
+function getSalaryMax(salaryStr) {
+  // 全ての数字を抽出して最大値を返す
+  const nums = salaryStr.match(/[0-9,]+/g);
+  if(!nums) return 0;
+  return Math.max(...nums.map(n => parseInt(n.replace(/,/g, ''))));
+}
 
 function update() {
   let n = 0;
   grid.querySelectorAll('.job-card').forEach(c => {
     const catOk = selCat === 'all' || c.dataset.cat === selCat;
     const tagOk = !selTag || c.dataset.tags.split(',').includes(selTag);
-    const show = catOk && tagOk;
+    const salOk = selSalary === 0 || getSalaryMax(c.dataset.salary) >= selSalary;
+    const txtOk = !searchText || c.dataset.company.includes(searchText);
+    const show = catOk && tagOk && salOk && txtOk;
     c.classList.toggle('hidden', !show);
     if(show) n++;
   });
@@ -151,6 +174,10 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
       selCat = val;
       document.querySelectorAll('[data-type="cat"]').forEach(b => b.classList.remove('on'));
       this.classList.add('on');
+    } else if(type === 'salary') {
+      selSalary = parseInt(val);
+      document.querySelectorAll('[data-type="salary"]').forEach(b => b.classList.remove('on'));
+      this.classList.add('on');
     } else {
       if(selTag === val) { selTag = null; this.classList.remove('on'); }
       else {
@@ -161,6 +188,11 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
     }
     update();
   });
+});
+
+document.getElementById('search-company').addEventListener('input', function() {
+  searchText = this.value.trim();
+  update();
 });
 </script>
 </body>
