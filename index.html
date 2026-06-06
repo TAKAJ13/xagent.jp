@@ -230,38 +230,35 @@ footer{background:var(--navy);padding:40px 20px 28px;}
 .stat-card.visible{opacity:1;transform:translateY(0);}
 .bar-fill{width:0;transition:width 1.2s cubic-bezier(0.4,0,0.2,1);}
 .donut-arc{transition:stroke-dasharray 1.4s cubic-bezier(0.4,0,0.2,1);}
-@keyframes shimmer{
-  0%{background-position:200% center;}
+@keyframes shimmer1{
+  0%,100%{background-position:200% center;}
   100%{background-position:-200% center;}
 }
-.hero h1{
-  background:linear-gradient(90deg,
-    #fff 0%,
-    #fff 35%,
-    #22D3EE 50%,
-    #fff 65%,
-    #fff 100%
-  );
-  background-size:200% auto;
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background-clip:text;
-  animation:shimmer 2s ease-in-out 0.3s 1 forwards;
+@keyframes shimmer2{
+  0%,100%{background-position:200% center;}
+  100%{background-position:-200% center;}
 }
-.hero h1 em{
-  background:linear-gradient(90deg,
-    #22D3EE 0%,
-    #22D3EE 35%,
-    #fff 50%,
-    #22D3EE 65%,
-    #22D3EE 100%
-  );
+.hero-line1{
+  display:block;
+  background:linear-gradient(90deg,#fff 0%,#fff 30%,#22D3EE 50%,#fff 70%,#fff 100%);
   background-size:200% auto;
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   background-clip:text;
-  animation:shimmer 2s ease-in-out 0.5s 1 forwards;
+  animation:shimmer1 1.2s ease-in-out 0.3s 1 forwards;
+}
+.hero-line2{
+  display:block;
+  background:linear-gradient(90deg,#fff 0%,#fff 30%,#22D3EE 50%,#fff 70%,#fff 100%);
+  background-size:200% auto;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:shimmer2 1.2s ease-in-out 1.6s 1 forwards;
+}
+.hero-line2 em{
   font-style:italic;
+  -webkit-text-fill-color:transparent;
 }
 @media(min-width:768px){
   header{height:72px;padding:0 48px;}
@@ -313,7 +310,7 @@ footer{background:var(--navy);padding:40px 20px 28px;}
   <div class="hero-grid"></div>
   <div class="hero-body">
     <div class="eyebrow">X-Agent serves startups</div>
-    <h1>スタートアップと<br><em>共に走る</em>エージェント</h1>
+    <h1><span class="hero-line1">スタートアップと</span><span class="hero-line2"><em>共に走る</em>エージェント</span></h1>
     <p class="hero-desc">起業家目線でスタートアップ・成長企業の人材採用から創業支援まで。エックスエージェントは候補者と企業双方の成功にコミットします。</p>
     <div style="margin-top:32px;text-align:center;">
       <a href="#contact" class="btn-p" style="display:inline-block;padding:18px 48px;font-size:15px;letter-spacing:0.1em;">無料転職相談に申し込む</a>
