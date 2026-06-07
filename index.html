@@ -258,7 +258,79 @@ footer{background:var(--navy);padding:40px 20px 28px;}
   .about-layout{grid-template-columns:1fr 1fr;gap:56px;margin-top:48px;}
   .ft-top{flex-direction:row;justify-content:space-between;align-items:flex-start;}
 }
+@media(min-width:768px){
+  #voices .sec-inner > div:last-child{grid-template-columns:repeat(3,1fr);}
+}
+details[open] summary span{content:"-";}
+details summary::-webkit-details-marker{display:none;}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "name": "エックスエージェント株式会社",
+      "url": "https://www.xagent.jp",
+      "description": "起業家エージェントによるスタートアップ・成長企業特化の人材紹介。CXO・事業責任者クラスの転職支援から創業支援まで。",
+      "founder": {
+        "@type": "Person",
+        "name": "飯盛崇",
+        "jobTitle": "代表取締役CEO",
+        "sameAs": "https://isakari.jp"
+      },
+      "areaServed": "JP",
+      "serviceType": "人材紹介・転職支援",
+      "knowsAbout": ["スタートアップ転職", "CXO採用", "事業責任者採用", "ストックオプション", "エグゼクティブ転職"]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "転職相談は無料ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい、求職者様への転職相談・サポートはすべて無料です。採用企業から紹介手数料をいただく仕組みのため、候補者様にご費用は一切かかりません。まずはお気軽にご相談ください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "どういったポジションの求人がありますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "CXO（CEO・COO・CFO・CTO・CMO）候補、事業責任者、経営企画、事業企画、エンタープライズ営業、カスタマーサクセスなど、スタートアップ・成長企業の中核ポジションを中心にご紹介しています。年収800万円〜2,000万円以上のレンジが多く、ストックオプション付きの求人も多数あります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "スタートアップの将来性をどう見極めたら良いかわかりません",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "代表の飯盛は自らスタートアップを共同創業しM&Aでグループインさせた経験を持ちます。事業フェーズ・資金調達状況・経営陣の質・市場規模・競合優位性など、経営者目線で候補者様と一緒に見極めます。内部情報を含めた詳細なご説明が可能です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "給与やストックオプションなど報酬面の相談はできますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい、報酬面のご相談は得意分野のひとつです。スタートアップ特有の働き方や、年収・ポジション・ストックオプション等の条件について、起業家目線で適切な水準をご案内します。条件交渉のサポートも行っています。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "フルリモート求人や地方の求人はありますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "フルリモート・ハイブリッド勤務の求人も取り扱っています。地方在住の方がリモートで上場企業やスタートアップにご転職された事例もございます。まずはご希望をお聞かせください。"
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -273,6 +345,7 @@ footer{background:var(--navy);padding:40px 20px 28px;}
     <a href="jobs/index.html">求人情報</a>
     <a href="#partners">パートナー</a>
     <a href="#about">会社概要</a>
+    <a href="#faq">よくある質問</a>
     <a href="#contact" class="nav-cta">お問い合わせ</a>
   </nav>
 </header>
@@ -459,6 +532,86 @@ footer{background:var(--navy);padding:40px 20px 28px;}
   </div>
 </section>
 
+
+<!-- FAQ & 候補者の声 -->
+<section class="sec" id="faq" style="background:#fff;">
+  <div class="sec-inner">
+    <div class="sec-lbl">For Candidates</div>
+    <h2 class="sec-ttl">よくあるご質問</h2>
+    <p class="sec-desc">転職をご検討中の方からよくいただくご質問です</p>
+
+    <div style="margin-top:40px;display:flex;flex-direction:column;gap:2px;">
+
+      <details style="background:#F8FAFC;border-left:3px solid #1A56DB;padding:20px 24px;cursor:pointer;">
+        <summary style="font-size:15px;font-weight:500;color:#0A1628;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+          転職相談は無料ですか？
+          <span style="font-size:20px;color:#1A56DB;flex-shrink:0;margin-left:16px;">+</span>
+        </summary>
+        <p style="margin-top:14px;font-size:14px;line-height:2;color:#475569;">はい、求職者様への転職相談・サポートはすべて無料です。採用企業から紹介手数料をいただく仕組みのため、候補者様にご費用は一切かかりません。まずはお気軽にご相談ください。</p>
+      </details>
+
+      <details style="background:#F8FAFC;border-left:3px solid #1A56DB;padding:20px 24px;cursor:pointer;">
+        <summary style="font-size:15px;font-weight:500;color:#0A1628;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+          どういったポジションの求人がありますか？
+          <span style="font-size:20px;color:#1A56DB;flex-shrink:0;margin-left:16px;">+</span>
+        </summary>
+        <p style="margin-top:14px;font-size:14px;line-height:2;color:#475569;">CXO候補・事業責任者・経営企画・事業企画・エンタープライズ営業・カスタマーサクセスなど、スタートアップ・成長企業の中核ポジションを中心にご紹介しています。年収800万円〜2,000万円以上のレンジを中心に、ストックオプション付きの求人も多数あります。</p>
+      </details>
+
+      <details style="background:#F8FAFC;border-left:3px solid #1A56DB;padding:20px 24px;cursor:pointer;">
+        <summary style="font-size:15px;font-weight:500;color:#0A1628;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+          スタートアップの将来性をどう見極めたら良いかわかりません
+          <span style="font-size:20px;color:#1A56DB;flex-shrink:0;margin-left:16px;">+</span>
+        </summary>
+        <p style="margin-top:14px;font-size:14px;line-height:2;color:#475569;">代表の飯盛はスタートアップを共同創業した経験を持ち、また経営した会社や投資先をM&Aによる複数回のEXITに成功しています。それとは別にスタートアップ支援法人の経営も行いながら、大学の起業教育の教員として体系的に昨今のスタートアップを理解しています。それらを活用し、事業フェーズ・資金調達状況・経営陣の質・市場規模・競合優位性など、独自の情報と視点で企業を分析し、候補者の皆様に共有することが可能です。</p>
+      </details>
+
+      <details style="background:#F8FAFC;border-left:3px solid #1A56DB;padding:20px 24px;cursor:pointer;">
+        <summary style="font-size:15px;font-weight:500;color:#0A1628;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+          給与やストックオプションなど報酬面の相談はできますか？
+          <span style="font-size:20px;color:#1A56DB;flex-shrink:0;margin-left:16px;">+</span>
+        </summary>
+        <p style="margin-top:14px;font-size:14px;line-height:2;color:#475569;">はい、報酬面のご相談は得意分野のひとつです。スタートアップ特有の働き方や、年収・ポジション・ストックオプション等の条件について、起業家目線で適切な水準をご案内します。条件交渉のサポートも行っています。</p>
+      </details>
+
+      <details style="background:#F8FAFC;border-left:3px solid #1A56DB;padding:20px 24px;cursor:pointer;">
+        <summary style="font-size:15px;font-weight:500;color:#0A1628;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+          フルリモート求人や地方の求人はありますか？
+          <span style="font-size:20px;color:#1A56DB;flex-shrink:0;margin-left:16px;">+</span>
+        </summary>
+        <p style="margin-top:14px;font-size:14px;line-height:2;color:#475569;">フルリモート・ハイブリッド勤務の求人も取り扱っています。地方在住の方がリモートで上場企業やスタートアップにご転職された事例もございます。まずはご希望をお聞かせください。</p>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="voices" style="background:#0A1628;">
+  <div class="sec-inner">
+    <div class="sec-lbl" style="background:linear-gradient(90deg,#22D3EE,#3B82F6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Voices</div>
+    <h2 class="sec-ttl" style="color:#fff;">転職された方からの声</h2>
+    <p class="sec-desc" style="color:rgba(255,255,255,0.55);">実際にご支援した方々からいただいたご評価です</p>
+
+    <div style="margin-top:40px;display:grid;grid-template-columns:1fr;gap:20px;">
+
+      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);padding:28px 24px;">
+        <p style="font-size:14px;line-height:2;color:rgba(255,255,255,0.85);">「スタートアップの経営経験があり、エージェント目線でなく経営者目線でのアドバイスが参考になった」</p>
+        <p style="margin-top:12px;font-size:12px;color:rgba(255,255,255,0.4);letter-spacing:0.05em;">事業責任者クラスへ転職・30代男性</p>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);padding:28px 24px;">
+        <p style="font-size:14px;line-height:2;color:rgba(255,255,255,0.85);">「求人企業の事業の状況や経営者のお人柄などを熟知されており、転職が初めての自分でも安心して進めることができた」</p>
+        <p style="margin-top:12px;font-size:12px;color:rgba(255,255,255,0.4);letter-spacing:0.05em;">CXO候補へ転職・30代男性</p>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);padding:28px 24px;">
+        <p style="font-size:14px;line-height:2;color:rgba(255,255,255,0.85);">「自身のタイプや強みを理解いただき、複数回の転職でお世話になっているが、生涯お世話になりたいと思う」</p>
+        <p style="margin-top:12px;font-size:12px;color:rgba(255,255,255,0.4);letter-spacing:0.05em;">複数回ご利用・40代男性</p>
+      </div>
+
+    </div>
+  </div>
+</section>
 <section class="sec" id="contact" style="background:#fff;">
   <div class="sec-inner">
     <div class="sec-lbl">Contact</div>
