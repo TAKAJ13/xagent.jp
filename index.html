@@ -183,7 +183,7 @@ nav.desktop{display:none;}
 /* ===== CONTACT ===== */
 #contact{background:var(--off);}
 .contact-box{background:#fff;padding:28px 20px;margin-top:36px;}
-.tabs{display:flex;border-bottom:2px solid var(--gl);margin-bottom:28px;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.tabs{display:flex;flex-wrap:wrap;border-bottom:2px solid var(--gl);margin-bottom:28px;}
 .tab{
   padding:10px 16px;font-size:12px;font-weight:500;color:var(--gm);
   cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;
@@ -540,42 +540,42 @@ details summary::-webkit-details-marker{display:none;}
     <h2 class="sec-ttl">よくあるご質問</h2>
     <p class="sec-desc">転職をご検討中の方からよくいただくご質問です</p>
 
-    <div style="margin-top:40px;display:flex;flex-direction:column;gap:2px;">
+    <div style="margin-top:40px;display:flex;flex-direction:column;gap:2px;overflow:hidden;">
 
-      <details style="background:#F8FAFC;border-left:3px solid #1A56DB;padding:20px 24px;cursor:pointer;">
-        <summary style="font-size:15px;font-weight:500;color:#0A1628;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+      <details style="background:#F8FAFC;border-left:3px solid #1A56DB;padding:20px 24px;cursor:pointer;overflow:hidden;word-break:keep-all;overflow-wrap:break-word;">
+        <summary style="font-size:15px;font-weight:500;color:#0A1628;list-style:none;display:flex;justify-content:space-between;align-items:flex-start;gap:8px;overflow-wrap:break-word;word-break:keep-all;">
           転職相談は無料ですか？
           <span style="font-size:20px;color:#1A56DB;flex-shrink:0;margin-left:16px;">+</span>
         </summary>
         <p style="margin-top:14px;font-size:14px;line-height:2;color:#475569;">はい、求職者様への転職相談・サポートはすべて無料です。採用企業から紹介手数料をいただく仕組みのため、候補者様にご費用は一切かかりません。まずはお気軽にご相談ください。</p>
       </details>
 
-      <details style="background:#F8FAFC;border-left:3px solid #1A56DB;padding:20px 24px;cursor:pointer;">
-        <summary style="font-size:15px;font-weight:500;color:#0A1628;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+      <details style="background:#F8FAFC;border-left:3px solid #1A56DB;padding:20px 24px;cursor:pointer;overflow:hidden;word-break:keep-all;overflow-wrap:break-word;">
+        <summary style="font-size:15px;font-weight:500;color:#0A1628;list-style:none;display:flex;justify-content:space-between;align-items:flex-start;gap:8px;overflow-wrap:break-word;word-break:keep-all;">
           どういったポジションの求人がありますか？
           <span style="font-size:20px;color:#1A56DB;flex-shrink:0;margin-left:16px;">+</span>
         </summary>
         <p style="margin-top:14px;font-size:14px;line-height:2;color:#475569;">CXO候補・事業責任者・経営企画・事業企画・エンタープライズ営業・カスタマーサクセスなど、スタートアップ・成長企業の中核ポジションを中心にご紹介しています。年収800万円〜2,000万円以上のレンジを中心に、ストックオプション付きの求人も多数あります。</p>
       </details>
 
-      <details style="background:#F8FAFC;border-left:3px solid #1A56DB;padding:20px 24px;cursor:pointer;">
-        <summary style="font-size:15px;font-weight:500;color:#0A1628;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+      <details style="background:#F8FAFC;border-left:3px solid #1A56DB;padding:20px 24px;cursor:pointer;overflow:hidden;word-break:keep-all;overflow-wrap:break-word;">
+        <summary style="font-size:15px;font-weight:500;color:#0A1628;list-style:none;display:flex;justify-content:space-between;align-items:flex-start;gap:8px;overflow-wrap:break-word;word-break:keep-all;">
           スタートアップの将来性をどう見極めたら良いかわかりません
           <span style="font-size:20px;color:#1A56DB;flex-shrink:0;margin-left:16px;">+</span>
         </summary>
         <p style="margin-top:14px;font-size:14px;line-height:2;color:#475569;">代表の飯盛はスタートアップを共同創業した経験を持ち、また経営した会社や投資先をM&Aによる複数回のEXITに成功しています。それとは別にスタートアップ支援法人の経営も行いながら、大学の起業教育の教員として体系的に昨今のスタートアップを理解しています。それらを活用し、事業フェーズ・資金調達状況・経営陣の質・市場規模・競合優位性など、独自の情報と視点で企業を分析し、候補者の皆様に共有することが可能です。</p>
       </details>
 
-      <details style="background:#F8FAFC;border-left:3px solid #1A56DB;padding:20px 24px;cursor:pointer;">
-        <summary style="font-size:15px;font-weight:500;color:#0A1628;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+      <details style="background:#F8FAFC;border-left:3px solid #1A56DB;padding:20px 24px;cursor:pointer;overflow:hidden;word-break:keep-all;overflow-wrap:break-word;">
+        <summary style="font-size:15px;font-weight:500;color:#0A1628;list-style:none;display:flex;justify-content:space-between;align-items:flex-start;gap:8px;overflow-wrap:break-word;word-break:keep-all;">
           給与やストックオプションなど報酬面の相談はできますか？
           <span style="font-size:20px;color:#1A56DB;flex-shrink:0;margin-left:16px;">+</span>
         </summary>
         <p style="margin-top:14px;font-size:14px;line-height:2;color:#475569;">はい、報酬面のご相談は得意分野のひとつです。スタートアップ特有の働き方や、年収・ポジション・ストックオプション等の条件について、起業家目線で適切な水準をご案内します。条件交渉のサポートも行っています。</p>
       </details>
 
-      <details style="background:#F8FAFC;border-left:3px solid #1A56DB;padding:20px 24px;cursor:pointer;">
-        <summary style="font-size:15px;font-weight:500;color:#0A1628;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+      <details style="background:#F8FAFC;border-left:3px solid #1A56DB;padding:20px 24px;cursor:pointer;overflow:hidden;word-break:keep-all;overflow-wrap:break-word;">
+        <summary style="font-size:15px;font-weight:500;color:#0A1628;list-style:none;display:flex;justify-content:space-between;align-items:flex-start;gap:8px;overflow-wrap:break-word;word-break:keep-all;">
           フルリモート求人や地方の求人はありますか？
           <span style="font-size:20px;color:#1A56DB;flex-shrink:0;margin-left:16px;">+</span>
         </summary>
@@ -594,17 +594,17 @@ details summary::-webkit-details-marker{display:none;}
 
     <div style="margin-top:40px;display:grid;grid-template-columns:1fr;gap:20px;">
 
-      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);padding:28px 24px;">
+      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);padding:24px 20px;overflow:hidden;word-break:keep-all;overflow-wrap:break-word;">
         <p style="font-size:14px;line-height:2;color:rgba(255,255,255,0.85);">「スタートアップの経営経験があり、エージェント目線でなく経営者目線でのアドバイスが参考になった」</p>
         <p style="margin-top:12px;font-size:12px;color:rgba(255,255,255,0.4);letter-spacing:0.05em;">事業責任者クラスへ転職・30代男性</p>
       </div>
 
-      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);padding:28px 24px;">
+      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);padding:24px 20px;overflow:hidden;word-break:keep-all;overflow-wrap:break-word;">
         <p style="font-size:14px;line-height:2;color:rgba(255,255,255,0.85);">「求人企業の事業の状況や経営者のお人柄などを熟知されており、転職が初めての自分でも安心して進めることができた」</p>
         <p style="margin-top:12px;font-size:12px;color:rgba(255,255,255,0.4);letter-spacing:0.05em;">CXO候補へ転職・30代男性</p>
       </div>
 
-      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);padding:28px 24px;">
+      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);padding:24px 20px;overflow:hidden;word-break:keep-all;overflow-wrap:break-word;">
         <p style="font-size:14px;line-height:2;color:rgba(255,255,255,0.85);">「自身のタイプや強みを理解いただき、複数回の転職でお世話になっているが、生涯お世話になりたいと思う」</p>
         <p style="margin-top:12px;font-size:12px;color:rgba(255,255,255,0.4);letter-spacing:0.05em;">複数回ご利用・40代男性</p>
       </div>
@@ -661,6 +661,8 @@ details summary::-webkit-details-marker{display:none;}
       <a href="jobs/index.html">求人情報</a>
       <a href="#partners">パートナー</a>
       <a href="#about">会社概要</a>
+      <a href="#faq">よくある質問</a>
+      <a href="#contact">お問い合わせ</a>
       <a href="/privacy-policy">Privacy Policy</a>
     </nav>
   </div>
