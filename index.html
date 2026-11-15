@@ -622,38 +622,13 @@ details summary::-webkit-details-marker{display:none;}
   <div class="sec-inner">
     <div class="sec-lbl">Contact</div>
     <h2 class="sec-ttl">お問い合わせ</h2>
-    <div class="contact-box">
-      <div class="tabs">
-        <div class="tab on" data-target="p-applicant">無料キャリア相談（求職者様）</div>
-        <div class="tab" data-target="p-company">採用をご検討中の企業様</div>
-      </div>
-      <div class="panel on" id="p-applicant">
-        <form action="https://formspree.io/f/mwvjpgwg" method="POST">
-          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <input type="hidden" name="_subject" value="【求職者様】キャリア相談">
-          <div class="fg"><label>お問い合わせ種別</label><select name="type"><option>転職のご相談</option><option>その他</option></select></div>
-          <div class="fg"><label>お名前<span>*</span></label><input type="text" name="name" required></div>
-          <div class="fg"><label>メールアドレス<span>*</span></label><input type="email" name="email" required></div>
-          <div class="fg"><label>電話番号</label><input type="tel" name="phone"></div>
-          <div class="fg"><label>お問い合わせ内容</label><textarea name="message"></textarea></div>
-          <button type="submit" class="f-btn">送信する</button>
-          <p class="prv">送信により<a href="/privacy-policy">Privacy Policy</a>に同意したものとみなします。</p>
-        </form>
-      </div>
-      <div class="panel" id="p-company">
-        <form action="https://formspree.io/f/xlgkdqal" method="POST">
-          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <input type="hidden" name="_subject" value="【企業様】お問い合わせ">
-          <div class="fg"><label>お問い合わせ種別</label><select name="type"><option>人材紹介</option><option>その他</option></select></div>
-          <div class="fg"><label>貴社名<span>*</span></label><input type="text" name="company" required></div>
-          <div class="fg"><label>お名前<span>*</span></label><input type="text" name="name" required></div>
-          <div class="fg"><label>メールアドレス<span>*</span></label><input type="email" name="email" required></div>
-          <div class="fg"><label>お問い合わせ内容</label><textarea name="message"></textarea></div>
-          <button type="submit" class="f-btn">送信する</button>
-          <p class="prv">送信により<a href="/privacy-policy">Privacy Policy</a>に同意したものとみなします。</p>
-        </form>
-      </div>
+    <p class="sec-desc">ご相談の種別に合わせて、専用のお問い合わせページからご連絡ください。</p>
+    <div style="margin-top:36px;display:grid;grid-template-columns:1fr;gap:16px;">
+      <a href="/contact/#applicant" style="display:block;background:#1A56DB;color:#fff;padding:20px 24px;font-size:15px;font-weight:500;letter-spacing:0.05em;text-align:center;">無料キャリア相談（求職者様）はこちら</a>
+      <a href="/contact/#company" style="display:block;background:#0A1628;color:#fff;padding:20px 24px;font-size:15px;font-weight:500;letter-spacing:0.05em;text-align:center;">採用をご検討中の企業様はこちら</a>
+      <a href="/contact/#sales" style="display:block;background:#F8FAFC;border:1px solid #E2EAF4;color:#475569;padding:20px 24px;font-size:15px;font-weight:500;letter-spacing:0.05em;text-align:center;">営業・アライアンスのご提案はこちら</a>
     </div>
+    <p style="margin-top:20px;font-size:12px;line-height:1.9;color:#94A3B8;">営業のご提案はこちらの専用フォームでお願いします。他のフォームからいただいた場合やご提案内容によって返信できかねます点、ご了承ください。</p>
   </div>
 </section>
 
