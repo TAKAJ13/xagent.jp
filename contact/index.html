@@ -494,6 +494,20 @@ document.addEventListener('DOMContentLoaded',function(){
   body{padding-bottom:60px;}
 }
 </style>
+
+<script>
+// 求人詳細ページからの応募導線：?job=会社名／職種名 を求職者フォームに自動入力（2026-11-19 AIO対応）
+(function(){
+  var job = new URLSearchParams(location.search).get('job');
+  if(!job) return;
+  var form = document.querySelector('#p-applicant form');
+  if(!form) return;
+  var ta = form.querySelector('textarea[name="message"]');
+  if(ta && !ta.value) ta.value = '応募・相談したい求人：' + job + '\n';
+  var subj = form.querySelector('input[name="_subject"]');
+  if(subj) subj.value = '【求職者様】求人への応募・相談：' + job;
+})();
+</script>
 </body>
 </html>
 <script>
